@@ -26,7 +26,17 @@ class CInv;
 class CRequestTracker;
 class CNode;
 
+
+#ifdef fTestNet
+static const int LAST_POW_BLOCK = 50;
+static const int JUMP_TO_POW_BLOCK = 150; 
+static const int REAL_LAST_POW_BLOCK = 3432960;
+#else
 static const int LAST_POW_BLOCK = 10000;
+static const int JUMP_TO_POW_BLOCK = 450000; 
+static const int REAL_LAST_POW_BLOCK = 3432960;
+#endif
+
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;

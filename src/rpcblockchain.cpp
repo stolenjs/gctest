@@ -45,7 +45,10 @@ double GetDifficulty(const CBlockIndex* blockindex)
 
 double GetPoWMHashPS()
 {
-    if (pindexBest->nHeight >= LAST_POW_BLOCK)
+    //This was done to fix the early end POW for goodcoin.
+   // if (pindexBest->nHeight >= LAST_POW_BLOCK)
+   //     return 0;
+    if ((pindexBest->nHeight >= LAST_POW_BLOCK && pindexBest->nHeight < JUMP_TO_POW_BLOCK) || (pindexBest->nHeight >= REAL_LAST_POW_BLOCK))
         return 0;
 
     int nPoWInterval = 72;

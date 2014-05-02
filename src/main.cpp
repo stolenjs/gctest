@@ -2325,7 +2325,12 @@ bool CBlock::AcceptBlock()
     CBlockIndex* pindexPrev = (*mi).second;
     int nHeight = pindexPrev->nHeight+1;
 
-    if (IsProofOfWork() && nHeight > LAST_POW_BLOCK)
+    //if (IsProofOfWork() && nHeight > LAST_POW_BLOCK)
+    //    return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
+  
+    // This section was modified to correct an error where LAST_POW_BLOCK caused POW  to stop pre
+
+    if (((IsProofOfWork() && nHeight > LAST_POW_BLOCK) && (IsProofOfWork() && nHeight < JUMP_TO_POW_BLOCK)) || (IsProofOfWork() && nHeight > REAL_LAST_POW_BLOCK))
         return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
     // Check proof-of-work or proof-of-stake
