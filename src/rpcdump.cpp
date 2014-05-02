@@ -162,7 +162,7 @@ Value importwallet(const Array& params, bool fHelp)
 
     bool fGood = true;
 
-    while (file.GOOD()) {
+    while (file.good()) {
         std::string line;
         std::getline(file, line);
         if (line.empty() || line[0] == '#')

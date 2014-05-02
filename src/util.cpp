@@ -1030,7 +1030,7 @@ boost::filesystem::path GetDefaultDataDir()
     return pathRet / "GoodCoin";
 #else
     // Unix
-    return pathRet / ".GOODcoin";
+    return pathRet / ".goodcoin";
 #endif
 #endif
 }
@@ -1072,7 +1072,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "GOODcoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "goodcoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1081,7 +1081,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
                     map<string, vector<string> >& mapMultiSettingsRet)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
-    if (!streamConfig.GOOD())
+    if (!streamConfig.good())
         return; // No bitcoin.conf file is OK
 
     set<string> setOptions;
@@ -1103,7 +1103,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "GOODcoind.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "goodcoind.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
