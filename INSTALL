@@ -1,0 +1,9 @@
+Building GoodCoin
+
+See doc/readme-qt.rst for instructions on building GoodCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of GoodCoin.
+
+See doc/build-*.txt for instructions on building GOODcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of GoodCoin.
