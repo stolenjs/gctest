@@ -361,7 +361,7 @@ boost::filesystem::path static GetAutostartFilePath()
 bool GetStartOnSystemStartup()
 {
     boost::filesystem::ifstream optionFile(GetAutostartFilePath());
-    if (!optionFile.GOOD())
+    if (!optionFile.good())
         return false;
     // Scan through file for "Hidden=true":
     std::string line;
@@ -391,7 +391,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::create_directories(GetAutostartDir());
 
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
-        if (!optionFile.GOOD())
+        if (!optionFile.good())
             return false;
         // Write a bitcoin.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
