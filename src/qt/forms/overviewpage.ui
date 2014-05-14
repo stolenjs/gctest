@@ -276,7 +276,7 @@ font-family:'Open Sans,sans-serif';</string>
              <string>Your current balance</string>
             </property>
             <property name="text">
-             <string notr="true">0 SC</string>
+             <string notr="true">0 GOOD</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -304,7 +304,7 @@ font-family:'Open Sans,sans-serif';</string>
              <string>Total of coins that was staked, and do not yet count toward the current balance</string>
             </property>
             <property name="text">
-             <string notr="true">0 SC</string>
+             <string notr="true">0 GOOD</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -332,7 +332,7 @@ font-family:'Open Sans,sans-serif';</string>
              <string>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</string>
             </property>
             <property name="text">
-             <string notr="true">0 SC</string>
+             <string notr="true">0 GOOD</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -357,7 +357,7 @@ font-family:'Open Sans,sans-serif';</string>
              <string>Mined balance that has not yet matured</string>
             </property>
             <property name="text">
-             <string notr="true">0 SC</string>
+             <string notr="true">0 GOOD</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
