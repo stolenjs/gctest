@@ -76,7 +76,7 @@ font-family:'Open Sans,sans-serif';</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;GOODcoin phases:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Block 1 to 10k - POW/POS&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Block 10k to 50k - Full POS&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Block 50k to 60k - POW/POS&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Block 60k+, full POS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Why GOODcoin ?&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Full time dev team&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Human Mining, do good get GOODs&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Many ways to earn coins&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;WE build community, no pump and dump coin&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
