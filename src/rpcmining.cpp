@@ -29,7 +29,7 @@ Value getsubsidy(const Array& params, bool fHelp)
         CBigNum bnTarget(uint256(params[0].get_str()));
     
     }
-    return (uint64_t)GetProofOfWorkReward(0, pindexBest->nHeight);
+    return ((uint64_t)GetProofOfWorkReward(0, pindexBest->nHeight)/100000000);
 }
 
 
@@ -53,7 +53,7 @@ Value getmininginfo(const Array& params, bool fHelp)
     diff.push_back(Pair("search-interval",      (int)nLastCoinStakeSearchInterval));
     obj.push_back(Pair("difficulty",    diff));
 
-    obj.push_back(Pair("blockvalue",    (uint64_t)GetProofOfWorkReward(0,pindexBest->nHeight)));
+    obj.push_back(Pair("blockvalue",    ((uint64_t)GetProofOfWorkReward(0,pindexBest->nHeight))/100000000));
     obj.push_back(Pair("netmhashps",     GetPoWMHashPS()));
     obj.push_back(Pair("netstakeweight", GetPoSKernelPS()));
     obj.push_back(Pair("errors",        GetWarnings("statusbar")));

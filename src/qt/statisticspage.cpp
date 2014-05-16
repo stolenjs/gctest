@@ -42,7 +42,8 @@ void StatisticsPage::updateStatistics()
     int pPawrate = GetPoWMHashPS();
     double pPawrate2 = 0.000;
     int nHeight = pindexBest->nHeight;
-    double nSubsidy = 0;
+    int64 nFees = 0;
+    double nSubsidy = (GetProofOfWorkReward(nFees, nHeight)/100000000);
     uint64_t nMinWeight = 0, nMaxWeight = 0, nWeight = 0;
     pwalletMain->GetStakeWeight(*pwalletMain, nMinWeight, nMaxWeight, nWeight);
     uint64_t nNetworkWeight = GetPoSKernelPS();
@@ -53,14 +54,19 @@ void StatisticsPage::updateStatistics()
     QString stakemin = QString::number(nMinWeight);
     QString stakemax = QString::number(nNetworkWeight);
     QString phase = "";
-    if (pindexBest->nHeight < 100000000)
+    if (nHeight < LAST_POW_BLOCK)
     {
         phase = "POW - POS";
     }
-    else
+    else if (nHeight >= LAST_POW_BLOCK && nHeight < JUMP_TO_POW_BLOCK)
     {
         phase = "POS";
     }
+    else if (nHeight >= JUMP_TO_POW_BLOCK && nHeight < REAL_LAST_POW_BLOCK)
+    {
+        phase = "POW - POS";
+    }
+
     QString subsidy = QString::number(nSubsidy, 'f', 6);
     QString hardness = QString::number(pHardness, 'f', 6);
     QString hardness2 = QString::number(pHardness2, 'f', 6);
