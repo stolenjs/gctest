@@ -5,6 +5,7 @@ INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
@@ -232,7 +233,9 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/blockbrowser.h \
     src/version.h \
     src/netbase.h \
-    src/clientversion.h
+    src/clientversion.h \
+	src/qt/chatwindow.h \
+	src/qt/serveur.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -245,7 +248,8 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/signverifymessagedialog.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
-    src/qt/bitcoinaddressvalidator.cpp \
+    src/qt/bitcoinaddressvalidator.cpp	\
+	src/qt/chatwindow.cpp \
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
@@ -298,6 +302,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/qtipcserver.cpp \
     src/qt/rpcconsole.cpp \
     src/qt/poolbrowser.cpp \
+	src/qt/serveur.cpp \
     src/noui.cpp \
     src/kernel.cpp \
     src/scrypt-arm.S \
@@ -333,8 +338,9 @@ FORMS += \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/poolbrowser.ui \
     src/qt/forms/statisticspage.ui \
-    src/qt/forms/blockbrowser.ui\
-    src/qt/forms/optionsdialog.ui
+    src/qt/forms/blockbrowser.ui \
+    src/qt/forms/optionsdialog.ui \
+	src/qt/forms/chatwindow.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h
