@@ -1,5 +1,5 @@
 /*
- * Qt4 bitcoin GUI.
+ * Qt5 bitcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin Developers 2011-2012
@@ -22,6 +22,7 @@
 #include "statisticspage.h"
 #include "blockbrowser.h"
 #include "poolbrowser.h"
+#include "chatwindow.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
@@ -108,7 +109,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create tabs
     overviewPage = new OverviewPage();
     statisticsPage = new StatisticsPage(this);
-
+    chatWindow = new ChatWindow(this);
 	blockBrowser = new BlockBrowser(this);
 	poolBrowser = new PoolBrowser(this);
 
@@ -129,6 +130,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
     centralWidget->addWidget(statisticsPage);
+	centralWidget->addWidget(chatWindow);
     centralWidget->addWidget(blockBrowser);
 	centralWidget->addWidget(poolBrowser);
     centralWidget->addWidget(transactionsPage);
@@ -243,6 +245,11 @@ void BitcoinGUI::createActions()
     statisticsAction->setCheckable(true);
     tabGroup->addAction(statisticsAction);
 
+    chatAction = new QAction(QIcon(":/icons/social"), tr("&Social"), this);
+    chatAction->setToolTip(tr("View chat"));
+    chatAction->setCheckable(true);
+    tabGroup->addAction(chatAction);	
+
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a GOODcoin address"));
     sendCoinsAction->setCheckable(true);
@@ -283,6 +290,7 @@ void BitcoinGUI::createActions()
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
 	connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
+	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -296,7 +304,7 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutCardAction = new QAction(tr("About GOODcoin card"), this);
+    aboutCardAction = new QAction(tr("GOODcoin Website"), this);
     aboutCardAction->setToolTip(tr("Show information about GOODcoin card"));
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About GOODcoin"), this);
     aboutAction->setToolTip(tr("Show information about GOODcoin"));
@@ -396,6 +404,7 @@ void BitcoinGUI::createToolBars()
 	toolbar->addAction(statisticsAction);
 	toolbar->addAction(blockAction);
 	toolbar->addAction(poolAction);
+	toolbar->addAction(chatAction);
 	toolbar->addAction(exportAction);
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -464,6 +473,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         signVerifyMessageDialog->setModel(walletModel);
 
         statisticsPage->setModel(clientModel);
+		chatWindow->setModel(clientModel);
         blockBrowser->setModel(clientModel);
         poolBrowser->setModel(clientModel);
         setEncryptionStatus(walletModel->getEncryptionStatus());
@@ -798,6 +808,14 @@ void BitcoinGUI::gotoStatisticsPage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
+void BitcoinGUI::gotoChatPage()
+{
+    chatAction->setChecked(true);
+    centralWidget->setCurrentWidget(chatWindow);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
 
 void BitcoinGUI::gotoHistoryPage()
 {
